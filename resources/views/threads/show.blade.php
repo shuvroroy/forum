@@ -34,5 +34,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="my-6">
+            @foreach($thread->replies as $reply)
+                <div class="max-w-md mx-auto mb-4">
+                    <div class="bg-white rounded shadow">
+                        <div class="border-b border-grey-lighter px-8 py-4 text-grey-darkest text-base">
+                            <a href="#" class="no-underline text-indigo hover:text-indigo-darker active:text-indigo hover:underline">{{ $reply->owner->name }}</a> said {{ $reply->created_at->diffForHumans() }}...
+                        </div>
+
+                        <div class="px-8 py-4">
+                            <p class="text-base text-grey-dark leading-normal tracking-normal">{{ $thread->body }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 @endsection

@@ -32,7 +32,7 @@
                 <div class="px-8 py-4">
                     @foreach($threads as $thread)
                         <article class="leading-normal tracking-normal mb-5">
-                            <h4 class="text-xl mb-1"><a href="{{ $thread->path() }}" class="no-underline text-grey-darkest hover:text-black hover:underline">{{ $thread->title }}</a></h4>
+                            <h4 class="text-xl mb-1"><a href="{{ $thread->path() }}" class="no-underline text-indigo active:text-indigo hover:text-indigo-darker hover:underline">{{ $thread->title }}</a></h4>
                             <p class="text-base text-grey-dark">{{ $thread->body }}</p>
                         </article>
                     @endforeach
