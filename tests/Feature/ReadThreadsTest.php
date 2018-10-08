@@ -9,6 +9,8 @@ class ReadThreadsTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected $thread;
+
     public function setUp()
     {
         parent::setUp();
@@ -42,6 +44,4 @@ class ReadThreadsTest extends TestCase
         $this->get($this->thread->path())
             ->assertSee($reply->body);
     }
-
-
 }

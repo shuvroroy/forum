@@ -26,6 +26,7 @@
         <div class="max-w-md mx-auto">
             <div class="bg-white rounded shadow">
                 <div class="border-b border-grey-lighter px-8 py-4 font-bold text-grey-darkest text-2xl">
+                    <a href="#">{{ $thread->creator->name }}</a> posted:
                     {{ $thread->title }}
                 </div>
 
@@ -44,7 +45,7 @@
                         </div>
 
                         <div class="px-8 py-4">
-                            <p class="text-base text-grey-dark leading-normal tracking-normal">{{ $thread->body }}</p>
+                            <p class="text-base text-grey-dark leading-normal tracking-normal">{{ $reply->body }}</p>
                         </div>
                     </div>
                 </div>
