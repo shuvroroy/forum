@@ -23,10 +23,10 @@ class ParticipateInForumTest extends TestCase
     function an_unauthenticated_user_may_not_participate_in_forum_threads()
     {
         $this->withoutExceptionHandling();
-        
+
         $this->expectException('Illuminate\Auth\AuthenticationException');
         
-        $this->post("/threads/1/replies", []);
+        $this->post("/threads/foo/1/replies", []);
     }
 
     /** @test */
@@ -36,7 +36,7 @@ class ParticipateInForumTest extends TestCase
 
         $reply = factory('App\Models\Reply')->make();
 
-        $this->post("/threads/{$this->thread->id}/replies", $reply->toArray());
+        $this->post($this->thread->path(). '/replies', $reply->toArray());
 
         $this->get($this->thread->path())
             ->assertSee($reply->body);
