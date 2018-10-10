@@ -8,7 +8,7 @@
         <div class="flex -mx-4">
             <div class="w-1/4 mx-4">
                 <div class="mb-8">
-                    <a href="#" class="block bg-indigo py-3 px-4 text-center text-bold text-white rounded hover:bg-indigo-dark">Create Thread</a>
+                    <a href="/threads/create" class="block bg-indigo py-3 px-4 text-center text-bold text-white rounded hover:bg-indigo-dark">Create Thread</a>
                 </div>
                 <div>
                     <h3 class="text-grey-darker text-xs uppercase tracking-wide mb-2">Channels</h3>
