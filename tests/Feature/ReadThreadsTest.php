@@ -44,4 +44,15 @@ class ReadThreadsTest extends TestCase
         $this->get($this->thread->path())
             ->assertSee($reply->body);
     }
+
+    /** @test */
+    function a_user_can_filter_threads_according_to_a_channel()
+    {
+        $channel = factory('App\Models\Channel')->create();
+        $threadInChannel = factory('App\Models\Thread')->create(['channel_id' => $channel->id]);
+        $threadNotInChannel = factory('App\Models\Thread')->create();
+        $this->get('/threads/'. $channel->slug)
+            ->assertSee($threadInChannel->title)
+            ->assertDontSee($threadNotInChannel->title);
+    }
 }
