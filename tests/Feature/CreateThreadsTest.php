@@ -18,6 +18,9 @@ class CreateThreadsTest extends TestCase
         $thread = factory('App\Models\Thread')->make();
 
         $this->post('/threads', $thread->toArray());
+
+        $this->withoutExceptionHandling()->get('/threads/create')
+            ->assertRedirect('/login');
     }
     
     /** @test */

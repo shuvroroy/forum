@@ -40,8 +40,8 @@
                     <div class="bg-white rounded shadow">
                         <form action="{{ $thread->path().'/replies' }}" method="post" class="flex flex-col">
                             @csrf
-                            <textarea name="body" class="text-grey-darkest flex-1 p-6 resize-none rounded" placeholder="Have something to say?" rows="5"></textarea>
-                            <button type="submit" class="p-4 bg-indigo text-white">Post</button>
+                            <textarea name="body" class="text-grey-darkest flex-1 p-6 resize-none rounded-t border border-transparent focus:outline-none focus:border-indigo-dark" placeholder="Have something to say?" rows="5"></textarea>
+                            <button type="submit" class="p-4 bg-indigo text-white rounded-b focus:outline-none focus:border-indigo-dark">Post</button>
                         </form>
                     </div>
                 </div>

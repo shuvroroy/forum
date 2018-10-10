@@ -22,6 +22,8 @@ class ParticipateInForumTest extends TestCase
     /** @test */
     function an_unauthenticated_user_may_not_participate_in_forum_threads()
     {
+        $this->withoutExceptionHandling();
+        
         $this->expectException('Illuminate\Auth\AuthenticationException');
         
         $this->post("/threads/1/replies", []);
