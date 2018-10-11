@@ -9,6 +9,7 @@
         @auth
             <a href="/threads?by={{ $name = auth()->user()->name }}" class="block no-underline px-3 py-2 text-base text-grey-dark mb-1 {{ request()->has('by') ? 'bg-white border-l-4 border-indigo rounded' : '' }}">My Threads</a>
         @endauth
+        <a href="/threads?popularity=1" class="block no-underline px-3 py-2 text-base text-grey-dark mb-1 {{ Request::is('threads') && request()->has('popularity') ? 'bg-white border-l-4 border-indigo rounded' : '' }}">Popular Threads</a>
     </div>
 
     <div>
