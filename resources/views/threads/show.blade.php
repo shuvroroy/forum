@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="my-6">
-                    @foreach($thread->replies as $reply)
+                    @foreach($replies as $reply)
                         <div class="mb-4">
                             <div class="bg-white rounded shadow">
                                 <div class="border-b border-grey-lighter px-8 py-4 text-grey-darkest text-base">
@@ -34,6 +34,10 @@
                             </div>
                         </div>
                     @endforeach
+
+                    <div class="list-reset">
+                        {{ $replies->links('threads.partials._pagination') }}
+                    </div>
                 </div>
 
                 @auth
