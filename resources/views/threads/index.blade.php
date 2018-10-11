@@ -6,18 +6,7 @@
         @include('threads.partials._nav')
 
         <div class="flex -mx-4">
-            <div class="w-1/4 mx-4">
-                <div class="mb-8">
-                    <a href="/threads/create" class="block bg-indigo py-3 px-4 text-center no-underline text-bold text-white rounded hover:underline hover:bg-indigo-dark">Create Thread</a>
-                </div>
-                <div>
-                    <h3 class="text-grey-darker text-xs uppercase tracking-wide mb-2">Channels</h3>
-                    <a href="/threads" class="block no-underline px-3 py-2 text-base text-grey-dark mb-1 {{ Request::is('threads') ? 'bg-white border-l-4 border-indigo rounded' : '' }}">All</a>
-                    @foreach($channels as $channel)
-                        <a href="/threads/{{ $channel->slug }}" class='block no-underline px-3 py-2 text-base text-grey-dark mb-1 {{ Request::is("threads/$channel->slug") ? "bg-white border-l-4 border-indigo rounded" : "" }}'>{{ $channel->name }}</a>
-                    @endforeach
-                </div>
-            </div>
+            @include('threads.partials._sidebar')
 
             <div class="w-3/4 mx-4">
                 <div class="bg-white rounded shadow">
