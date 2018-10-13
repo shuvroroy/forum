@@ -11,7 +11,7 @@
             <div class="w-3/4 mx-4">
                 <div class="bg-white rounded shadow">
                     <div class="border-b border-grey-lighter px-8 py-4 font-bold text-grey-darkest text-2xl">
-                        <a href="#" class="no-underline text-indigo hover:text-indigo-darker active:text-indigo hover:underline">{{ $thread->creator->name }}</a> posted:
+                        <a href="/profiles/{{ $thread->creator->name }}" class="no-underline text-indigo hover:text-indigo-darker active:text-indigo hover:underline">{{ $thread->creator->name }}</a> posted:
                         {{ $thread->title }}
                     </div>
 
@@ -25,7 +25,7 @@
                         <div class="mb-4">
                             <div class="bg-white rounded shadow">
                                 <div class="border-b border-grey-lighter px-8 py-4 text-grey-darkest text-base flex justify-between items-center">
-                                    <div><a href="#" class="no-underline text-indigo hover:text-indigo-darker active:text-indigo hover:underline">{{ $reply->owner->name }}</a> said {{ $reply->created_at->diffForHumans() }}...</div>
+                                    <div><a href="/profiles/{{ $reply->owner->name }}" class="no-underline text-indigo hover:text-indigo-darker active:text-indigo hover:underline">{{ $reply->owner->name }}</a> said {{ $reply->created_at->diffForHumans() }}...</div>
                                     <form action="/replies/{{ $reply->id }}/favorites" method="post">
                                         @csrf
                                         <button type="submit" class="flex items-center focus:outline-none">
@@ -42,9 +42,7 @@
                         </div>
                     @endforeach
 
-                    <div class="list-reset">
-                        {{ $replies->links('threads.partials._pagination') }}
-                    </div>
+                    {{ $replies->links('threads.partials._pagination') }}
                 </div>
 
                 @auth
