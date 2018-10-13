@@ -24,8 +24,15 @@
                     @foreach($replies as $reply)
                         <div class="mb-4">
                             <div class="bg-white rounded shadow">
-                                <div class="border-b border-grey-lighter px-8 py-4 text-grey-darkest text-base">
-                                    <a href="#" class="no-underline text-indigo hover:text-indigo-darker active:text-indigo hover:underline">{{ $reply->owner->name }}</a> said {{ $reply->created_at->diffForHumans() }}...
+                                <div class="border-b border-grey-lighter px-8 py-4 text-grey-darkest text-base flex justify-between items-center">
+                                    <div><a href="#" class="no-underline text-indigo hover:text-indigo-darker active:text-indigo hover:underline">{{ $reply->owner->name }}</a> said {{ $reply->created_at->diffForHumans() }}...</div>
+                                    <form action="/replies/{{ $reply->id }}/favorites" method="post">
+                                        @csrf
+                                        <button type="submit" class="flex items-center focus:outline-none">
+                                            <svg class="w-5 h-5 {{ $reply->isFavorited() ? 'text-red' : '' }}" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z"/></svg>
+                                            <span class="block ml-1 text-base">{{ $reply->favorites()->count() }}</span>
+                                        </button>
+                                    </form>
                                 </div>
 
                                 <div class="px-8 py-4">
