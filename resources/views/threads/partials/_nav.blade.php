@@ -8,6 +8,9 @@
     <div>
         <ul class="list-reset flex">
             @auth
+                <li class="mr-4">
+                    <a href="{{ route('profile', auth()->user()) }}" class="text-base no-underline text-grey-darker hover:text-grey-darkest">My Profile</a>
+                </li>
                 <li>
                     <a href="{{ route('logout') }}" class="text-base no-underline text-grey-darker hover:text-grey-darkest" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
 

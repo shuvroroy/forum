@@ -11,8 +11,20 @@
             <div class="w-3/4 mx-4">
                 <div class="bg-white rounded shadow">
                     <div class="border-b border-grey-lighter px-8 py-4 font-bold text-grey-darkest text-2xl">
-                        <a href="/profiles/{{ $thread->creator->name }}" class="no-underline text-indigo hover:text-indigo-darker active:text-indigo hover:underline">{{ $thread->creator->name }}</a> posted:
-                        {{ $thread->title }}
+                        <div class="flex">
+                            <div class="flex-1">
+                                <a href="/profiles/{{ $thread->creator->name }}" class="no-underline text-indigo hover:text-indigo-darker active:text-indigo hover:underline">{{ $thread->creator->name }}</a> posted:
+                                {{ $thread->title }}
+                            </div>
+                            @auth
+                                <form action="{{ $thread->path() }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="text-xs text-red p-2 border border-red bg-red-lightest rounded focus:outline-none">Delete Thread</button>
+                                </form>
+                            @endauth
+                        </div>
                     </div>
 
                     <div class="px-8 py-4">
