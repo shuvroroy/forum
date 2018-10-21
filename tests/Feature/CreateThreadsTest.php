@@ -64,26 +64,25 @@ class CreateThreadsTest extends TestCase
     }
 
     /** @test */
-    function guest_cannot_delete_threads()
+    function unauthorized_user_may_not_delete_threads()
     {
         $thread = factory('App\Models\Thread')->create();
 
         $this->delete($thread->path())
             ->assertRedirect('/login');
+
+        $this->be($user = factory('App\Models\User')->create());
+
+        $this->delete($thread->path())
+            ->assertStatus(403);
     }
 
     /** @test */
-    function threads_may_only_be_deleted_by_those_who_have_permission()
-    {
-        // TODO:
-    }
-
-    /** @test */
-    function a_thread_can_be_deleted()
+    function authorized_user_only_delete_threads()
     {
         $this->be($user = factory('App\Models\User')->create());
 
-        $thread = factory('App\Models\Thread')->create();
+        $thread = factory('App\Models\Thread')->create(['user_id' => auth()->id()]);
         $reply = factory('App\Models\Reply')->create(['thread_id' => $thread->id]);
 
         $this->json('DELETE', $thread->path())
